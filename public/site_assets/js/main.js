@@ -12,59 +12,59 @@ const slideArrow = {
   nextArrow: `<button type="button" class="slick-next"><i class="fas fa-chevron-right"></i></button>`,
   prevArrow: `<button type="button" class="slick-prev"><i class="fas fa-chevron-left"></i></button>`,
 };
-const DUMMY_DATA = [
-  {
-    image: "assets/images/posts/1.png",
-    category: "Technology",
-    title: "Looking for some feedback for this rejected track",
-    date: "Clock  Wed 02, 2019",
-    comment: 3,
-  },
-  {
-    image: "assets/images/posts/2.png",
-    category: "Typography",
-    title: "How to name, save and export a finish template",
-    date: "Clock  Wed 02, 2019",
-    comment: 3,
-  },
-  {
-    image: "assets/images/posts/3.png",
-    category: "Graphic",
-    title: "I want to create a logo with illustrator hacker",
-    date: "Clock  Wed 02, 2019",
-    comment: 3,
-  },
-  {
-    image: "assets/images/posts/4.png",
-    category: "Design",
-    title: "where I can found the sound in this video template?",
-    date: "Clock  Wed 02, 2019",
-    comment: 3,
-  },
-  {
-    image: "assets/images/posts/5.png",
-    category: "Graphic",
-    title: "I want to create a logo with illustrator hacker",
-    date: "Clock  Wed 02, 2019",
-    comment: 3,
-  },
-  {
-    image: "assets/images/posts/6.png",
-    category: "Typography",
-    title: "where I can found the sound in this video template?",
-    date: "Clock  Wed 02, 2019",
-    comment: 3,
-  },
-  {
-    image: "assets/images/posts/7.png",
-    category: "Graphic",
-    title: "I want to create a logo with illustrator hacker",
-    date: "Clock  Wed 02, 2019",
-    comment: 3,
-  },
-];
+// const DUMMY_DATA = [
+//   {
+//     image: "assets/images/posts/1.png",
+//     category: "Technology",
+//     title: "Looking for some feedback for this rejected track",
+//     date: "Clock  Wed 02, 2019",
+//     comment: 3,
+//   },
+//   {
+//     image: "assets/images/posts/2.png",
+//     category: "Typography",
+//     title: "How to name, save and export a finish template",
+//     date: "Clock  Wed 02, 2019",
+//     comment: 3,
+//   },
+//   {
+//     image: "assets/images/posts/3.png",
+//     category: "Graphic",
+//     title: "I want to create a logo with illustrator hacker",
+//     date: "Clock  Wed 02, 2019",
+//     comment: 3,
+//   },
+//   {
+//     image: "assets/images/posts/4.png",
+//     category: "Design",
+//     title: "where I can found the sound in this video template?",
+//     date: "Clock  Wed 02, 2019",
+//     comment: 3,
+//   },
+//   {
+//     image: "assets/images/posts/5.png",
+//     category: "Graphic",
+//     title: "I want to create a logo with illustrator hacker",
+//     date: "Clock  Wed 02, 2019",
+//     comment: 3,
+//   },
+//   {
+//     image: "assets/images/posts/6.png",
+//     category: "Typography",
+//     title: "where I can found the sound in this video template?",
+//     date: "Clock  Wed 02, 2019",
+//     comment: 3,
+//   },
+//   {
+//     image: "assets/images/posts/7.png",
+//     category: "Graphic",
+//     title: "I want to create a logo with illustrator hacker",
+//     date: "Clock  Wed 02, 2019",
+//     comment: 3,
+//   },
+// ];
 
-let currentCategoryLayout = "";
+// let currentCategoryLayout = "";
 
 //==========================================
 //  Utilities
@@ -96,86 +96,86 @@ function clickOutSideElm(elm, callback) {
 //==========================================
 
 //Category post generator
-function categoryGenerator() {
-  function getLayout() {
-    let $activeCategoryItem = $(".category__header__filter__item.active");
-    let $categoryContent = $(".category_content");
-    const currentLayout = $activeCategoryItem.data("layout");
-    let content = "";
-    if (currentCategoryLayout === currentLayout) {
-      return;
-    }
-    currentCategoryLayout = currentLayout;
-    if (currentCategoryLayout === "grid") {
-      DUMMY_DATA.forEach((item, index) => {
-        content += `
-          <div class="post-card -center"><a class="card__cover" href="post_standard.html"><img src="${item.image}" alt="${item.title}"></a>
-            <div class="card__content">
-            <h5 class="card__content-category">${item.category}</h5><a class="card__content-title" href="post_standard.html">${item.title}</a>
-            <div class="card__content-info">
-              <div class="info__time"><i class="far fa-clock"></i>
-                <p>${item.date}</p>
-              </div>
-              <div class="info__comment"><i class="far fa-comment"></i>
-                <p>${item.comment}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        `;
-      });
+// function categoryGenerator() {
+//   function getLayout() {
+//     let $activeCategoryItem = $(".category__header__filter__item.active");
+//     let $categoryContent = $(".category_content");
+//     const currentLayout = $activeCategoryItem.data("layout");
+//     let content = "";
+//     if (currentCategoryLayout === currentLayout) {
+//       return;
+//     }
+//     currentCategoryLayout = currentLayout;
+//     if (currentCategoryLayout === "grid") {
+//       DUMMY_DATA.forEach((item, index) => {
+//         content += `
+//           <div class="post-card -center"><a class="card__cover" href="post_standard.html"><img src="${item.image}" alt="${item.title}"></a>
+//             <div class="card__content">
+//             <h5 class="card__content-category">${item.category}</h5><a class="card__content-title" href="post_standard.html">${item.title}</a>
+//             <div class="card__content-info">
+//               <div class="info__time"><i class="far fa-clock"></i>
+//                 <p>${item.date}</p>
+//               </div>
+//               <div class="info__comment"><i class="far fa-comment"></i>
+//                 <p>${item.comment}</p>
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+//         `;
+//       });
 
-      $categoryContent
-        .empty()
-        .addClass("-grid")
-        .removeClass("-list")
-        .prepend(content);
-      let $masonryBeauty = $categoryContent.masonry({
-        itemSelector: ".post-card",
-        gutter: 20,
-      });
-      $masonryBeauty.imagesLoaded().progress(function () {
-        $masonryBeauty.masonry("layout");
-      });
-    } else {
-      $categoryContent.masonry("destroy");
-      DUMMY_DATA.forEach((item, index) => {
-        content += `
-        <div class="col-12">
-          <div class="post-card -small -horizontal"><a class="card__cover" href="post_standard.html" tabindex="0"><img src="${item.image}" alt="${item.title}"></a>
-            <div class="card__content">
-              <h5 class="card__content-category">Technology</h5><a class="card__content-title" href="post_standard.html" tabindex="0">${item.title}</a>
-              <div class="card__content-info">
-                <div class="info__time"><i class="far fa-clock"></i>
-                  <p>Clock  Wed 02, 2019</p>
-                </div>
-                <div class="info__comment"><i class="far fa-comment"></i>
-                  <p>3</p>
-                </div>
-              </div>
-              <p class="card__content-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt labore aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.</p>
-            </div>
-          </div>
-        </div>`;
-      });
-      content = `<div class="row">${content}</div>`;
-      $categoryContent
-        .empty()
-        .addClass("-list")
-        .removeClass("-grid")
-        .prepend(content);
-    }
-  }
+//       $categoryContent
+//         .empty()
+//         .addClass("-grid")
+//         .removeClass("-list")
+//         .prepend(content);
+//       let $masonryBeauty = $categoryContent.masonry({
+//         itemSelector: ".post-card",
+//         gutter: 20,
+//       });
+//       $masonryBeauty.imagesLoaded().progress(function () {
+//         $masonryBeauty.masonry("layout");
+//       });
+//     } else {
+//       $categoryContent.masonry("destroy");
+//       DUMMY_DATA.forEach((item, index) => {
+//         content += `
+//         <div class="col-12">
+//           <div class="post-card -small -horizontal"><a class="card__cover" href="post_standard.html" tabindex="0"><img src="${item.image}" alt="${item.title}"></a>
+//             <div class="card__content">
+//               <h5 class="card__content-category">Technology</h5><a class="card__content-title" href="post_standard.html" tabindex="0">${item.title}</a>
+//               <div class="card__content-info">
+//                 <div class="info__time"><i class="far fa-clock"></i>
+//                   <p>Clock  Wed 02, 2019</p>
+//                 </div>
+//                 <div class="info__comment"><i class="far fa-comment"></i>
+//                   <p>3</p>
+//                 </div>
+//               </div>
+//               <p class="card__content-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt labore aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.</p>
+//             </div>
+//           </div>
+//         </div>`;
+//       });
+//       content = `<div class="row">${content}</div>`;
+//       $categoryContent
+//         .empty()
+//         .addClass("-list")
+//         .removeClass("-grid")
+//         .prepend(content);
+//     }
+//   }
 
-  getLayout();
+//   getLayout();
 
-  $(".category__header__filter__item").on("click", function (e) {
-    e.preventDefault();
-    $(".category__header__filter__item").removeClass("active");
-    $(this).addClass("active");
-    getLayout();
-  });
-}
+//   $(".category__header__filter__item").on("click", function (e) {
+//     e.preventDefault();
+//     $(".category__header__filter__item").removeClass("active");
+//     $(this).addClass("active");
+//     getLayout();
+//   });
+// }
 
 //Nav dropdown handle
 function navDropdownHandle() {

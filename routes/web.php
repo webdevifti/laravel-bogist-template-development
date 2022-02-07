@@ -24,6 +24,8 @@ Route::get('/',[HomeController::class, 'index'])->name('home');
 Route::get('/post/{slug}',[HomeController::class, 'show'])->name('post');
 Route::get('/about',[AboutController::class, 'index'])->name('about');
 Route::get('/contact',[ContactController::class, 'index'])->name('contact');
+Route::get('/grid/{category}', [HomeController::class,'gridView']);
+Route::get('/list/{category}', [HomeController::class,'listView']);
 
 
 

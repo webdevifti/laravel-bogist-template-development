@@ -105,13 +105,18 @@
               <div class="col-12 col-md-12 col-lg-4">
                 <div class="footer-col -util">
                   <div class="row">
+                    @if($getactivecategories)
                     <div class="col-12 col-md-6 col-lg-12">
                       <div class="center-line-title"> 
-                        <h5>Tag clouds</h5>
+                        <h5>Categories</h5>
                       </div>
-                      <div class="tags-group"><a class="tag-btn" href="blog_category_grid.html">Gutenews</a><a class="tag-btn" href="blog_category_grid.html">Lifestyle</a><a class="tag-btn" href="blog_category_grid.html">Fashion</a><a class="tag-btn" href="blog_category_grid.html">Technology</a><a class="tag-btn" href="blog_category_grid.html">Food</a><a class="tag-btn" href="blog_category_grid.html">Travel</a>
+                      <div class="tags-group">
+                        @foreach($getactivecategories as $cat)
+                        <a class="tag-btn" href="{{ url('list/') }}/{{$cat->category_slug}}">{{ $cat->category_name }}</a>
+                        @endforeach
                       </div>
                     </div>
+                    @endif
                     <div class="col-12 col-md-6 col-lg-12">
                       <div class="center-line-title"> 
                         <h5>Follow us</h5>
