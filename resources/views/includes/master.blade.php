@@ -75,45 +75,33 @@
                   </div>
                 </div>
               </div>
+              @if($featurePost)
               <div class="col-12 col-md-6 col-lg-4">
                 <div class="footer-col -feature-post">
                   <div class="center-line-title"> 
                     <h5>Feature posts</h5>
                   </div>
                   <div class="feature-post-block">
-                        <div class="post-card -tiny"><a class="card__cover" href="post_standard.html"><img src="site_assets/images/posts/1.png" alt="Looking for some feedback for this rejected track"/></a>
-                          <div class="card__content">
-                            <h5 class="card__content-category">Technology</h5><a class="card__content-title" href="post_standard.html">Looking for some feedback for this rejected track</a>
-                            <div class="card__content-info">
-                              <div class="info__time"><i class="far fa-clock"></i>
-                                <p>Clock  Wed 02, 2019</p>
-                              </div>
-                            </div>
+                    @foreach($featurePost as $feature)
+                    <div class="post-card -tiny">
+                      <a class="card__cover" href="/post/{{ $feature->slug }}">
+                        <img src="{{ asset('uploads/posts/'.$feature->post_thumbnail) }}" alt="{{ $feature->title }}"/>
+                      </a>
+                      <div class="card__content">
+                        <h5 class="card__content-category">{{ $feature->category }}</h5>
+                        <a class="card__content-title" href="/post/{{ $feature->slug }}">{{ $feature->title }}</a>
+                        <div class="card__content-info">
+                          <div class="info__time"><i class="far fa-clock"></i>
+                            <p>{{ $feature->created_at->diffForHumans() }}</p>
                           </div>
                         </div>
-                        <div class="post-card -tiny"><a class="card__cover" href="post_standard.html"><img src="site_assets/images/posts/2.png" alt="How to name, save and export a finish template"/></a>
-                          <div class="card__content">
-                            <h5 class="card__content-category">Typography</h5><a class="card__content-title" href="post_standard.html">How to name, save and export a finish template</a>
-                            <div class="card__content-info">
-                              <div class="info__time"><i class="far fa-clock"></i>
-                                <p>Clock  Wed 02, 2019</p>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="post-card -tiny"><a class="card__cover" href="post_standard.html"><img src="site_assets/images/posts/3.png" alt="I want to create a logo with illustrator hacker"/></a>
-                          <div class="card__content">
-                            <h5 class="card__content-category">Graphic</h5><a class="card__content-title" href="post_standard.html">I want to create a logo with illustrator hacker</a>
-                            <div class="card__content-info">
-                              <div class="info__time"><i class="far fa-clock"></i>
-                                <p>Clock  Wed 02, 2019</p>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
+                      </div>
+                    </div>
+                    @endforeach
                   </div>
                 </div>
               </div>
+              @endif
               <div class="col-12 col-md-12 col-lg-4">
                 <div class="footer-col -util">
                   <div class="row">
