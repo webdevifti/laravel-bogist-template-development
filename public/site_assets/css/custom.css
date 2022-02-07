@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
+.post_content pre{
+    padding: 20px;
+}
+.post_content p{
+    line-height: 30px;
+    font-family: 'DM-Sans', sans-serif;;
+}
+.post_content h1,h2,h3,h4,h5,h6{
+    margin: 10px 0px;
+}
+.post_content a{
+    text-decoration: underline;
+    margin: 5px 0px;
+    display: inline-block;
+    font-family: 'DM-sanse', sans-serif;
+}
+.post_content h1{
+    font-size: 36px;
+}
+.post_content h2{
+    font-size: 32px;
+}
+.post_content h3{
+    font-size: 26px;
+}
+.post_content h4{
+    font-size: 22px;
+}
+.post_content h5{
+    font-size: 20px;
+}
+.post_content h6{
+    font-size: 18px;
+}
+.post_content pre code{
+    color: #fff;
+    background-color: rgb(59, 59, 59);
+    font-family: 'Fira Code', monospace;
+}
+.post_content pre code span{
+    line-height: 25px;
+}
