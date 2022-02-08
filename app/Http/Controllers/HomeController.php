@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Comment;
+use App\Models\ContactAddress;
 use App\Models\Post;
 use App\Models\Social;
 use Exception;
@@ -35,7 +36,8 @@ class HomeController extends Controller
         $getActivePosts = Post::where('status','=',1)->orderBy('created_at','DESC')->paginate(20);
         $featurePost = Post::inRandomOrder()->limit(3)->get();
         $getactivecategories = Category::where('status','=',1)->orderBy('created_at','DESC')->get();
-        return view('index', compact('getActivePosts','getActiveSocialMedia','featurePost','getactivecategories'));
+        $get_contact_info = ContactAddress::limit(1)->first();
+        return view('index', compact('getActivePosts','getActiveSocialMedia','featurePost','getactivecategories','get_contact_info'));
     }
     public function show($slug){
         try{
@@ -45,7 +47,8 @@ class HomeController extends Controller
             $getActiveSocialMedia = Social::where('status','=',1)->orderBy('created_at','DESC')->get();
             $featurePost = Post::where('slug','!=',$slug)->inRandomOrder()->limit(3)->get();
             $getactivecategories = Category::where('status','=',1)->orderBy('created_at','DESC')->get();
-            return view('post',compact('get_post','getRandomPost','getActiveSocialMedia','featurePost','getactivecategories','comments'));
+            $get_contact_info = ContactAddress::limit(1)->first();
+            return view('post',compact('get_post','getRandomPost','getActiveSocialMedia','featurePost','getactivecategories','comments','get_contact_info'));
         }catch(Exception $e){
             return back();
         }
@@ -57,7 +60,8 @@ class HomeController extends Controller
         $getCategoryPosts = Post::where('category','=',$cat)->orderBy('created_at','DESC')->paginate(10);
         $getactivecategories = Category::where('status','=',1)->orderBy('created_at','DESC')->get();
         $trendingPosts = Post::orderBy('created_at', 'DESC')->limit(5)->get();
-        return view('blog_category_list', compact('cat','getactivecategories','getCategoryPosts','getActiveSocialMedia','featurePost','trendingPosts'));
+        $get_contact_info = ContactAddress::limit(1)->first();
+        return view('blog_category_list', compact('cat','getactivecategories','getCategoryPosts','getActiveSocialMedia','featurePost','trendingPosts','get_contact_info'));
     }
     public function gridView($cat){
         $featurePost = Post::inRandomOrder()->limit(3)->get();
@@ -65,6 +69,7 @@ class HomeController extends Controller
         $getactivecategories = Category::where('status','=',1)->orderBy('created_at','DESC')->get();
         $getCategoryPosts = Post::where('category','=',$cat)->orderBy('created_at','DESC')->paginate(10);
         $trendingPosts = Post::orderBy('created_at', 'DESC')->limit(5)->get();
-        return view('blog_category_grid', compact('cat','getCategoryPosts','getactivecategories','getActiveSocialMedia','featurePost','trendingPosts'));
+        $get_contact_info = ContactAddress::limit(1)->first();
+        return view('blog_category_grid', compact('cat','getCategoryPosts','getactivecategories','getActiveSocialMedia','featurePost','trendingPosts','get_contact_info'));
     }
 }

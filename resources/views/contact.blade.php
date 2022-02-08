@@ -13,6 +13,7 @@
       <div class="row">
         <div class="col-12 col-md-6">
           <div class="contact-us__info">
+            <h3 class="page_title">GET IN TOUCH</h3>
             {!! $get_contact_info->contact_content !!}
             <div class="contact-method">
               <div class="contact-method__item"><i class="fas fa-map-marker-alt"></i>

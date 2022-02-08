@@ -69,4 +69,8 @@ Route::group(['middleware' => ['protectedRoutes']], function(){
     Route::get('/admin/contact-address',[ContactAddressController::class, 'index'])->name('admin.contact.address');
     Route::put('/admin/contact/update/{id}',[ContactAddressController::class, 'update']);
 
+    Route::get('admin/user/profile', function(){
+        return view('admin.profile.index');
+    });
+
 });
