@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="{{ asset('site_assets/css/custom.css') }}"/>
     <link rel="stylesheet"
       href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/default.min.css">
+      
     <!--endbuild-->
   </head>
   <body>

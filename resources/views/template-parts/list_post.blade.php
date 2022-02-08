@@ -12,13 +12,12 @@
           <p>{{ $post->created_at->diffForHumans() }}</p>
         </div>
         <div class="info__comment"><i class="far fa-comment"></i>
-          <p>3</p>
+          <p>{{ count($post->comment) }}</p>
         </div>
       </div>
-      <p class="card__content-description">{!! substr($post->article,0,100) !!}</p>
+      <p class="card__content-description">{!! substr($post->article,0,50) !!}</p>
     </div>
   </div>
 </div>
 @endforeach
-
 @endif

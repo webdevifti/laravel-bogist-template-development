@@ -22,8 +22,8 @@ class CreatePostsTable extends Migration
             $table->string('category');
             $table->unsignedBigInteger('posted_by');
             $table->integer('status')->default('1');
-            $table->timestamps();
             $table->foreign('posted_by')->references('id')->on('users');
+            $table->timestamps();
         });
     }
 

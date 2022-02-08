@@ -6,7 +6,7 @@
           <h5>Categories</h5>
         </div>
         @foreach($getactivecategories as $c)
-        <a class="category -bar " href="blog_category_grid.html">
+        <a class="category -bar " href="/list/{{ $c->category_slug }}">
           <div class="category__background" style="background-image: url({{asset('site_assets/images/backgrounds/category-1.png') }})"></div>
           <h5 class="title">{{ $c->category_name }}</h5>
           <h5 class="quantity">12</h5>
@@ -20,10 +20,16 @@
         <div class="center-line-title"> 
           <h5>Trending post</h5>
         </div>
+        @php
+            $sl= 0;
+        @endphp
         @foreach($trendingPosts as $tp)
+        @php
+            $sl++
+        @endphp
         <div class="trending-post">
           <div class="trending-post_image">
-            <div class="rank">1</div><img src="{{ asset('uploads/posts/'.$tp->post_thumbnail) }}" alt="{{ $tp->title }}"/>
+            <div class="rank">{{ $sl }}</div><img src="{{ asset('uploads/posts/'.$tp->post_thumbnail) }}" alt="{{ $tp->title }}"/>
           </div>
           <div class="trending-post_content">
             <h5>{{ $tp->category }}</h5><a href="/post/{{ $tp->slug }}">{{ substr($tp->title,0,50) }}</a>

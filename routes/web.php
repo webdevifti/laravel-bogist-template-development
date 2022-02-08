@@ -3,6 +3,7 @@
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\admin\CategoryController;
+use App\Http\Controllers\admin\CommentController;
 use App\Http\Controllers\admin\PostController;
 use App\Http\Controllers\admin\SocialMediaController;
 use App\Http\Controllers\ContactController;
@@ -26,6 +27,8 @@ Route::get('/about',[AboutController::class, 'index'])->name('about');
 Route::get('/contact',[ContactController::class, 'index'])->name('contact');
 Route::get('/grid/{category}', [HomeController::class,'gridView']);
 Route::get('/list/{category}', [HomeController::class,'listView']);
+
+Route::post('/comment/create', [CommentController::class, 'store'])->name('comment.store');
 
 
 

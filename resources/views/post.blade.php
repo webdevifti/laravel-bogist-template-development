@@ -21,7 +21,7 @@
                         <p>{{ $get_post->created_at->diffForHumans() }}</p>
                       </div>
                       <div class="info__comment"><i class="far fa-comment"></i>
-                        <p>3</p>
+                        <p>{{ count($get_post->comment) }}</p>
                       </div>
                     </div>
                   </div>
@@ -41,10 +41,15 @@
               </div>
                   
               <div class="post-footer">
+                @if($getactivecategories)
                 <div class="post-footer__tags center">
-                  <div class="tags-group"><a class="tag-btn" href="blog_category_grid.html">Gutenews</a><a class="tag-btn" href="blog_category_grid.html">Lifestyle</a><a class="tag-btn" href="blog_category_grid.html">Fashion</a><a class="tag-btn" href="blog_category_grid.html">Technology</a><a class="tag-btn" href="blog_category_grid.html">Food</a>
+                  <div class="tags-group">
+                    @foreach($getactivecategories as $ac)
+                    <a class="tag-btn" href="/list/{{ $ac->category_slug }}">{{ $ac->category_name }}</a>
+                    @endforeach
                   </div>
                 </div>
+                @endif
                 <div class="post-footer__author">
                   <div class="author__avatar"><img src="assets/images/post_detail/author.png" alt="Author avatar"/></div>
                   <div class="author__info">
@@ -90,56 +95,46 @@
                 </div>
                 @endif
                 <div class="post-footer__comment">
-                  <h3 class="comment-title"> <span>3 comment</span></h3>
+                  <h3 class="comment-title"> <span>{{ $get_post->comment->count() }} comment</span></h3>
                   <div class="post-footer__comment__detail">
+                    @if($comments)
+                    @foreach($comments as $comment)
                     <div class="comment__item">
-                      <div class="comment__item__avatar"><img src="assets/images/post_detail/avatar/1.png" alt="Author avatar"/></div>
+                      
                       <div class="comment__item__content">
                         <div class="comment__item__content__header">
-                          <h5>Brandon Kelley</h5>
+                          <h5>{{ $comment->name }}</h5>
                           <div class="data">
-                            <p><i class="far fa-clock"></i>Aug,15, 2019</p>
-                            <p><i class="far fa-heart"></i>12</p>
-                            <p><i class="far fa-share-square"></i>1</p>
+                            <p><i class="far fa-clock"></i>{{ $comment->created_at->diffForHumans() }}</p>
                           </div>
                         </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore aliqua. Quis ipsum suspendisse ultrices gravida lacus vel facilisis.</p>
-                      </div>
-                      <div class="comment__item__reply">
-                        <div class="comment__item">
-                          <div class="comment__item__avatar"><img src="assets/images/post_detail/avatar/2.png" alt="Author avatar"/></div>
-                          <div class="comment__item__content">
-                            <div class="comment__item__content__header">
-                              <h5>Brandon Kelley</h5>
-                              <div class="data">
-                                <p><i class="far fa-clock"></i>Aug,15, 2019</p>
-                                <p><i class="far fa-heart"></i>12</p>
-                                <p><i class="far fa-share-square"></i>1</p>
-                              </div>
-                            </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis ipsum suspendisse ultrices gravida lacus vel facilisis, sed do eiusmod tempor.</p>
-                          </div>
-                        </div>
+                        <p>{{ $comment->comments }}</p>
                       </div>
                     </div>
-                    <div class="comment__item">
-                      <div class="comment__item__avatar"><img src="assets/images/post_detail/avatar/3.png" alt="Author avatar"/></div>
-                      <div class="comment__item__content">
-                        <div class="comment__item__content__header">
-                          <h5>Brandon Kelley</h5>
-                          <div class="data">
-                            <p><i class="far fa-clock"></i>Aug,15, 2019</p>
-                            <p><i class="far fa-heart"></i>12</p>
-                            <p><i class="far fa-share-square"></i>1</p>
-                          </div>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore aliqua. Quis ipsum suspendisse ultrices gravida lacus vel facilisis.</p>
-                      </div>
-                    </div>
+                    @endforeach
+                    {{ $comments->links() }}
+                    @endif
                   </div>
-                  <h3 class="comment-title"> <span>Leave a comment</span></h3>
-                  <div class="post-footer__comment__form">
-                    <form action="/">
+                  <h3 class="comment-title" id="comments"> <span>Leave a comment</span></h3>
+                  @if(session()->has('success_commented'))
+                    <div style="color: green">
+                      {{ session()->get('success_commented') }}
+                    </div>
+                    @endif
+                    @if(session()->has('error_commented'))
+                    <div style="color: red">
+                      {{ session()->get('error_commented') }}
+                    </div>
+                    @endif
+                    @if($errors->any())
+                      @foreach ($errors->all() as $error)
+                          <div style="color: red">{{ $error }}</div>
+                      @endforeach
+                    @endif
+                  <div class="post-footer__comment__form" >
+                    <form action="{{ route('comment.store') }}" method="POST">
+                      @csrf
+                      <input type="hidden" name="post_id" value="{{ $get_post->id }}">
                       <div class="row">
                         <div class="col-12 col-sm-4">
                           <input type="text" placeholder="Name" name="name"/>
@@ -147,15 +142,13 @@
                         <div class="col-12 col-sm-4">
                           <input type="email" placeholder="Email" name="email"/>
                         </div>
-                        <div class="col-12 col-sm-4">
-                          <input type="text" placeholder="Webiste" name="website"/>
-                        </div>
+                       
                       </div>
                       <textarea cols="30" rows="5" placeholder="Messages" name="message"></textarea>
+                      <div class="center">
+                        <button type="submit" class="btn">Submit</button>
+                      </div>
                     </form>
-                    <div class="center">
-                      <button class="btn -normal">Submit</button>
-                    </div>
                   </div>
                 </div>
               </div>

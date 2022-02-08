@@ -1,4 +1,5 @@
 @extends('includes.master')
+@section('title','Contact')
 @section('MainContent')
 <div class="no-pd" id="content">
   <div class="container">

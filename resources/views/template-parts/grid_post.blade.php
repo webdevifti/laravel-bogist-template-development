@@ -9,7 +9,7 @@
             <p>{{ $post->created_at->diffForHumans() }}</p>
           </div>
           <div class="info__comment"><i class="far fa-comment"></i>
-            <p>3</p>
+            <p>{{ count($post->comment) }}</p>
           </div>
         </div>
       </div>
