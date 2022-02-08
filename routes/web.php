@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\admin\AboutController as adminAbout;
+use App\Http\Controllers\admin\ContactAddressController;
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\CommentController;
@@ -9,6 +11,7 @@ use App\Http\Controllers\admin\SocialMediaController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,5 +62,11 @@ Route::group(['middleware' => ['protectedRoutes']], function(){
     Route::put('/admin/social/update/{id}', [SocialMediaController::class, 'update'])->name('admin.social.update');
     Route::delete('/admin/social/{id}', [SocialMediaController::class, 'destroy'])->name('admin.social.delete');
     Route::get('/admin/social/status/{id}', [SocialMediaController::class, 'changeStatus']);
+
+
+    Route::get('/admin/about',[adminAbout::class, 'index'])->name('admin.about');
+    Route::put('/admin/about/update/{id}',[adminAbout::class, 'update']);
+    Route::get('/admin/contact-address',[ContactAddressController::class, 'index'])->name('admin.contact.address');
+    Route::put('/admin/contact/update/{id}',[ContactAddressController::class, 'update']);
 
 });

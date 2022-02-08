@@ -86,6 +86,17 @@
                     <span>Social Media</span></a>
             </li>
 
+            <li class="nav-item {{ Request()->is('admin/about') ? 'active': '' }}">
+                <a class="nav-link" href="{{ route('admin.about') }}">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>About Page Content</span></a>
+            </li>
+            <li class="nav-item {{ Request()->is('admin/contact-address') ? 'active': '' }}">
+                <a class="nav-link" href="{{ route('admin.contact.address') }}">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Contact Page Content</span></a>
+            </li>
+
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 

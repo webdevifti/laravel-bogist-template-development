@@ -13,17 +13,16 @@
       <div class="row">
         <div class="col-12 col-md-6">
           <div class="contact-us__info">
-            <h3 class="contact-title">GET IN TOUCH</h3>
-            <p class="contact-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </p>
+            {!! $get_contact_info->contact_content !!}
             <div class="contact-method">
               <div class="contact-method__item"><i class="fas fa-map-marker-alt"></i>
-                <p>5 South Main Street Los Angeles, ZZ-96110 USA</p>
+                <p>{{ $get_contact_info->address }}</p>
               </div>
               <div class="contact-method__item"><i class="fas fa-mobile-alt"></i>
-                <p>125-711-811   |   125-668-886</p>
+                <p>{{ $get_contact_info->contact_number }}</p>
               </div>
               <div class="contact-method__item"><i class="fas fa-headphones-alt"></i>
-                <p>Support.hosting@gmail.com</p>
+                <p>{{ $get_contact_info->email_address }}</p>
               </div>
             </div>
           </div>

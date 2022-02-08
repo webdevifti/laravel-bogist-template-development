@@ -41,3 +41,7 @@
 .post_content pre code span{
     line-height: 25px;
 }
+
+.contact-us__info p{
+    font-family: inherit;
+}
