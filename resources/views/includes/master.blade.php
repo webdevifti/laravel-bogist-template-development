@@ -15,10 +15,12 @@
     <link rel="stylesheet" href="{{ asset('site_assets/css/plyr.min.css') }}"/>
     <link rel="stylesheet" href="{{ asset('site_assets/css/style.css') }}"/>
     <link rel="stylesheet" href="{{ asset('site_assets/css/custom.css') }}"/>
-    <link rel="stylesheet"
-      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/default.min.css">
-      
+    
     <!--endbuild-->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/default.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" />
+
+
   </head>
   <body>
     <div id="load">

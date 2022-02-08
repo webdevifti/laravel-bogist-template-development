@@ -3,7 +3,7 @@
 @section('MainContent')
 <div class="no-pd" id="content">
   <div class="container">
-        <div class="breadcrumb">
+        <div class="breadcrumb mt-5">
           <ul>
             <li><a href="{{ url('/') }}"> <i class="fas fa-home"></i>Home</a></li>
             <li><a href="#">Blog</a></li>

@@ -8,7 +8,7 @@ use App\Models\Post;
 use App\Models\Social;
 use Exception;
 use Illuminate\Http\Request;
-use Phpfastcache\Helper\Psr16Adapter;
+// use Phpfastcache\Helper\Psr16Adapter;
 
 class HomeController extends Controller
 {
@@ -54,7 +54,7 @@ class HomeController extends Controller
     public function listView($cat){
         $featurePost = Post::inRandomOrder()->limit(3)->get();
         $getActiveSocialMedia = Social::where('status','=',1)->orderBy('created_at','DESC')->get();
-        $getCategoryPosts = Post::where('category','=',$cat)->orderBy('created_at','DESC')->get();
+        $getCategoryPosts = Post::where('category','=',$cat)->orderBy('created_at','DESC')->paginate(10);
         $getactivecategories = Category::where('status','=',1)->orderBy('created_at','DESC')->get();
         $trendingPosts = Post::orderBy('created_at', 'DESC')->limit(5)->get();
         return view('blog_category_list', compact('cat','getactivecategories','getCategoryPosts','getActiveSocialMedia','featurePost','trendingPosts'));
@@ -63,7 +63,7 @@ class HomeController extends Controller
         $featurePost = Post::inRandomOrder()->limit(3)->get();
         $getActiveSocialMedia = Social::where('status','=',1)->orderBy('created_at','DESC')->get();
         $getactivecategories = Category::where('status','=',1)->orderBy('created_at','DESC')->get();
-        $getCategoryPosts = Post::where('category','=',$cat)->orderBy('created_at','DESC')->get();
+        $getCategoryPosts = Post::where('category','=',$cat)->orderBy('created_at','DESC')->paginate(10);
         $trendingPosts = Post::orderBy('created_at', 'DESC')->limit(5)->get();
         return view('blog_category_grid', compact('cat','getCategoryPosts','getactivecategories','getActiveSocialMedia','featurePost','trendingPosts'));
     }

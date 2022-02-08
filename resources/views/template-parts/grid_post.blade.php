@@ -16,4 +16,5 @@
     </div>
   @endforeach
 </div>
+{{ $getCategoryPosts->links() }}
 @endif
